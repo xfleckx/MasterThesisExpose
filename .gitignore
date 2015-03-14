@@ -105,5 +105,8 @@ sympy-plots-for-*.tex/
 # todonotes
 *.tdo
 
+#sublime
+*.tmp
+
 # xindy
 *.xdy
