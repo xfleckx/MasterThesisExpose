@@ -14,9 +14,11 @@
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}	% Custom captions under/above floats
 \usepackage[protrusion=true,expansion=true]{microtype}				% Better typography
 
-\title{Utilizing Modern Game Development Technologies for Neuro-Scientific Research}					% Title of your article 
+\newcommand{\cItemSpacing}{0.05em}
+
+\title{Utilizing Unity3D for Spatial Navigation Research at the BeMoBI Lab}
 \subtitle{Expose - Master Thesis}
-\author{Markus Fleck : 337265}
+\author{Markus Fleck, B.Sc. : 337265}
 \date{\today}
 
 \begin{document} 
@@ -28,50 +30,68 @@
 \end{abstract}
 
 \section*{Introduction}
-
-The Berlin Mobil Brain/Body Imaging lab (\emph{BeMoBIL}) investigates human brain dynamics on spatial orientation tasks on subjects actual performing real body movements while navigating through and interacting with their environments. \cite{gramann2011cognition}
-% Warum wird das gemacht? 
-% Vielleicht - was hat das mit Human Factors  tun? 
-
-Such a cross-disciplinary research often requires a broad range of knowledge and skills besides the actual domain of the research.
-In the case of BeMoBIL, spatial cognition research needs complex setups due to following requirements:
+The Berlin Mobil Brain/Body Imaging lab (\emph{BeMoBIL}) investigates human brain dynamics on spatial navigation and orientation tasks. Gramann et.al.\nocite{gramann2014imaging} affirm that ''our cognitive processes and supporting brain dynamics are inherently coupled both to our environment and to our physical structure and actions.'' To further prove this assumption, experiments need to be designed in a way that allow subjects actually perform real body movements while navigating through and interacting with their environments. Such an approach implies rather complex setups due to following challenges:
 \begin{itemize} 
-	\item Building different technological setups necessary for orientation and navigation tasks beyond conventional approaches of subjects looking to a screen and doesn't move.
-	\item The acquisition and statistical analytics of -physiological data corresponding to different kind of events provided by the experimental paradigm.
+\setlength\itemsep{\cItemSpacing}
+	\item More complex technological setups necessary for orientation and navigation tasks beyond conventional approaches of subjects looking to a screen while lacking the opportunity of movement. 
+	\item The possibility of actual movement and orientation behaviour demands on physical environments which are flexible and easy to modify within an running experiment. 
+	\item The acquisition and statistical analysis of bio-physiological (e.g. EEG, EMG) data becomes more complicated and less reliable when they are done in real world environments. Also the implementation of different types of physical events, forcing measureable changes in subjects behaviour, might emerge in a lot of effort on design and implementation. 
 \end{itemize}
-Further research requires the usage of virtual environments to enable a broad range of experimental setups with an higher % Validity
-than conventional paradigms. 
+Head-mounted virtual environments in combination with real-time motion capture systems might be able to overcome the most restrictions real world experiments might have.\cite{bohil2011virtual} 
+Nevertheless, building virtual environments even on a simple level requires a lot of knowledge (Fundamentals of 3D graphics) and skills (3D modelling, environment/level design, riging and animate avatars) in addition to the cross-disciplinary skill set neccessary for neuroscientific spatial cognition research. So, some kind of abstraction is necessary to provide the advantage of virtual environments by making their creation less complicated. Especially if different levels of graphical fidelity are essentiel. 
+The industry for creative gaming and interactive media has authored a broad range of tools providing these abstractions. A convergence of such tools into researchers toolbox might bring a significant support for the research community. This leads to the research question described below. A modern integrated game engine called Unity3D (Version 5, Unity Technologies Inc.) provides such an abstraction. 
+Regarding the fact that there are a lot of comparable tools are available on the market, Unity3D was choosen based on the assumption that it's the most easy software to learn currently available to the market. Further verification is needed, since there is no objective research available to that assumption.
 
-\section*{State-of-the-Art}
+\section*{Research questions}
+The thesis should contribute to the following questions through implementing a proof of concept for the BeMoBIL reseach approach.
 
-% Requirements of current and future spatial cognition research 
+(1) Is the usage of tools made for the design and implementation of video games also useful for the creation of experimental paradigms? 
+(2) Especially, if they are using head-mounted virtual reality displays and real-time motion capture data?
+(3) Are the abstractions provided by Unity3D supportive for researchers? 
 
-% Divergent of evolving tool sets
-
-\section*{Concrete research question}
-
-Is the usage of tools made for the design and implementation of video games also useful for the creation of experimental paradigms. Especially, if they are using head-mounted virtual reality displays and real-time motion capture data? 
+Considering the complexity of these questions, the thesis will not be able to answer these questions entirely, instead it aims to provide a qualitative investigation of a prototype resulting in an example which could be used for comparison with other approaches and technologies.
 
 \section*{Methods \& Procedures}
+To approach an answer to the given questions, Unity3D will be used to implement one experimental paradigm as example. The paradigm itself will not be designed within the thesis, it will be contributed by the BeMoBI team. However, a set of requirements targeting technological functionalities needs to be carried together. Based on these, a set of basic software components needs to be developed providing the functionality for the example paradigm and experimental paradigms considering virtual environments in general. 
+Finally, the quality of the approach has to be examined, by running a pilot experiment. The usability of the components and the game design environment itself will be investigated via an explorative usability study. 
 
-To approach an answer to the given question a modern game engine called Unity3D will be used to implement on experimental paradigm as example. Furthermore, the quality of the approach has to be proofed.  
-The usability of the components and the game engine itself will be investigated on a qualitative usability study. Also the quality of the data generated by the approach needs to be proofed, therefor what?
+\subsection*{Requirement Analysis}
+To create an outline of a framework which enables the easy creation of virtual environments for spatial navigation experiments the thesis will use qualitative unstructed interviews with members of the beMoBIL research team. Additionaly, a deductive analysis of prior experiments found in the literatur should supplement and validate the requirements collected through the interviews. In summary, the outcome lead to the second part of the thesis.
 
-\subsection*{Technological Integration}
- 
+\subsection*{Technical Integration and framework design} 
+The thesis focuses primarily on converging available technologies and concepts rather than reinventing the wheel. The chosen game development environment already provides most parts of the necessary features to build virtual environments. While Unity3D is intented to be used by game developers, in the case of that usage scenario neuroscientists are those who will have to work it. In respect of that, usability needs to be considered. 
+Thus, Unity3D components needs to be extended in a semantic and functional way that provides an easy start and supportive workflow for neuroscientist. These components are grouped together in a framework which could be investigated regarding usability issues later on. The following list provides an overview on the main tasks.
+
 \begin{itemize}
-\item Integrate the different hard and software components to provide easy access to all the necessary data like MotionCapturing, Sensor data of the head-mounted display. 
-\item Integrate the output data through an interface already used by the data acquisition and analytics framework.
-\item Provide components producing data on orientation and navigation of subjects.
+\setlength\itemsep{\cItemSpacing}
+\item Integrate the different hard- and software components to provide easy access to all the necessary data like MotionCapturing-Markers and sensor data of the head-mounted display.
+% Überarbeiten
+%\item Implement components fitting the needs of a example experiment which represents a significant set of the requirements yield by the requirement analysis.
+%%%%%%%%%%
+%\item Active vs. passive Navigation (Camera movement, player controlling through Joysticks etc.)
+%\item Mechanism for changing trials and conditions providing smooth transistions necessary, regarding the VR best practices. \cite{ocubp2015}
+\item Implement interfaces for submitting the output data (e.g. event marker) to the data acquisition and analytics framework in charge, called LabStreamingLayer.
+\item Provide components producing data on orientation and navigation of the subjects
+% including event generation based on the relative or absolute orientation of the subjects heading and position in the virtual environment.
+%\item Yield reusable examples of interactive elements for the virtual environment. 
 \end{itemize}
 
 \subsection*{Empirical work}
 
+The final part of the thesis consists of two different topics. First the validation of the core functionality provided by the framework using a pilot experiment. Second, evaluating the quality of the described approach focusing on the usability of Unity3D and the framework components.
 
+A pilot experiment, implementing a spatial navigation task, will be conducted to test the general functionality and the reliability of the framework. Therefore, only a few subjects will be tested on the paradigm implemented with the framework. The interpretation of the data regarding to potential neuroscientific findings will not be part of the thesis. It might be done by the BeMoBI Team. 
 
-\section*{Timeline}
+To approach a verification of the assumptions targeting the usability of Unity3D and the framework a group usability study will be conducted. The method is qualified to rapidly collect major usability issues and functional deficits of a system in a short amount of time.\cite{downey2007group}
+Therefore, a one-day workshop with the BeMoBIL Team will be held. Regarding the complexity of the topic, the appropiate task might be the modification of the prior described paradigm of the pilot experiment with reduced demand on programming.
 
-\bibliographystyle{plain}
+\section*{Schedule}
+
+\paragraph{April - Mai} Iterative requirement analysis and rapid prototyping for the framework components necessary for the pilot experiment.
+\paragraph{June} Data collection of the pilot experiment coupled with further development of the framework components. Additionally to that, the usability studie will be prepared. Description the whole framework in the thesis, and conducting the workshop. Evaluation the workshop results. 
+\paragraph{July} Finalizing the thesis. 
+
+\bibliographystyle{apalike}
 \bibliography{../../literatur}
 
 \end{document}
