@@ -1,6 +1,7 @@
 
-\documentclass[	DIV=calc, paper=a4,	fontsize=11pt, twocolumn]{scrartcl}
-
+\documentclass[bibtex,apacite]{apa6}
+% http://ftp.fernuni-hagen.de/ftp-dir/pub/mirrors/www.ctan.org/macros/latex/contrib/apa6/apa6.pdf
+% ftp://ftp.tu-chemnitz.de/pub/tex/biblio/bibtex/contrib/apacite/apacite.pdf
 \usepackage[english]{babel}
 
 \usepackage[utf8]{inputenc}
@@ -9,38 +10,36 @@
 
 \renewcommand*{\familydefault}{\sfdefault}
 
-\usepackage[pdftex]{graphicx}
+%\usepackage[pdftex]{graphicx}
 \usepackage[svgnames]{xcolor}
-\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}	% Custom captions under/above floats
+%\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}	% Custom captions under/above floats
 \usepackage[protrusion=true,expansion=true]{microtype}				% Better typography
 
 \newcommand{\cItemSpacing}{0.05em}
 
 \title{Utilizing Unity3D for Spatial Navigation Research at the BeMoBI Lab}
-\subtitle{Expose - Master Thesis}
-\author{Markus Fleck, B.Sc. : 337265}
+\shorttitle{Expose - Master Thesis}
+\author{Markus Fleck, B.Sc., 337265}
+\affiliation{Technical University Berlin, Department of Psychology and Ergonomics}
 \date{\today}
 
-\begin{document} 
+\abstract{This document describes the outline of a master thesis. The work aims to prototype and evaluate a technological framework for supporting neuroscientists on building virtual environments for spatial navigation experiments.}
 
+\begin{document} 
 \maketitle
 
-\begin{abstract}
-% summarize at the end
-\end{abstract}
-
 \section*{Introduction}
-The Berlin Mobil Brain/Body Imaging lab (\emph{BeMoBIL}) investigates human brain dynamics on spatial navigation and orientation tasks. Gramann et.al.\nocite{gramann2014imaging} affirm that ''our cognitive processes and supporting brain dynamics are inherently coupled both to our environment and to our physical structure and actions.'' To further prove this assumption, experiments need to be designed in a way that allow subjects actually perform real body movements while navigating through and interacting with their environments. Such an approach implies rather complex setups due to following challenges:
+The Berlin Mobil Brain/Body Imaging lab (\emph{BeMoBIL}) investigates human brain dynamics on spatial navigation and orientation tasks. \citeA{gramann2014imaging} affirm that ''our cognitive processes and supporting brain dynamics are inherently coupled both to our environment and to our physical structure and actions.'' To further prove this assumption, experiments need to be designed in a way that allow subjects actually perform real body movements while navigating through and interacting with their environments. Such an approach implies rather complex setups due to following challenges:
 \begin{itemize} 
 \setlength\itemsep{\cItemSpacing}
 	\item More complex technological setups necessary for orientation and navigation tasks beyond conventional approaches of subjects looking to a screen while lacking the opportunity of movement. 
 	\item The possibility of actual movement and orientation behaviour demands on physical environments which are flexible and easy to modify within an running experiment. 
 	\item The acquisition and statistical analysis of bio-physiological (e.g. EEG, EMG) data becomes more complicated and less reliable when they are done in real world environments. Also the implementation of different types of physical events, forcing measureable changes in subjects behaviour, might emerge in a lot of effort on design and implementation. 
 \end{itemize}
-Head-mounted virtual environments in combination with real-time motion capture systems might be able to overcome the most restrictions real world experiments might have.\cite{bohil2011virtual} 
+Head-mounted virtual environments in combination with real-time motion capture systems might be able to overcome the most restrictions real world experiments might have\cite{bohil2011virtual}. 
+%TODO wie kann VR konkret helfen?
 Nevertheless, building virtual environments even on a simple level requires a lot of knowledge (Fundamentals of 3D graphics) and skills (3D modelling, environment/level design, riging and animate avatars) in addition to the cross-disciplinary skill set neccessary for neuroscientific spatial cognition research. So, some kind of abstraction is necessary to provide the advantage of virtual environments by making their creation less complicated. Especially if different levels of graphical fidelity are essentiel. 
-The industry for creative gaming and interactive media has authored a broad range of tools providing these abstractions. A convergence of such tools into researchers toolbox might bring a significant support for the research community. This leads to the research question described below. A modern integrated game engine called Unity3D (Version 5, Unity Technologies Inc.) provides such an abstraction. 
-Regarding the fact that there are a lot of comparable tools are available on the market, Unity3D was choosen based on the assumption that it's the most easy software to learn currently available to the market. Further verification is needed, since there is no objective research available to that assumption.
+The industry for creative gaming and interactive media has authored a broad range of tools providing these abstractions, called game engines. A convergence of one of these engines to the researchers toolbox might be a significant support for the research community. Unity3D (Version 5, Unity Technologies Inc.) is such an integrated game engine and provides abstractions for all common game design tasks, like level design or scripting. Regarding the fact that there are a lot of comparable tools are available on the market, Unity3D was choosen as an example which comes with an huge and rapidly growing user base and a comprehensive feature set. It uses a high level and object oriented programming language in combination with a component oriented architecture. Furthermore, the editor environment combines visual object composition and scripting. The work aims to investigate the usefullness of Unity3D in the described research setting. Therefore, it is (G1) intendet to transfer game design concepts into the domain of scientific experiments, and (G2) evaluate the usability of the outcome.
 
 \section*{Research questions}
 The thesis should contribute to the following questions through implementing a proof of concept for the BeMoBIL reseach approach.
@@ -82,7 +81,7 @@ The final part of the thesis consists of two different topics. First the validat
 
 A pilot experiment, implementing a spatial navigation task, will be conducted to test the general functionality and the reliability of the framework. Therefore, only a few subjects will be tested on the paradigm implemented with the framework. The interpretation of the data regarding to potential neuroscientific findings will not be part of the thesis. It might be done by the BeMoBI Team. 
 
-To approach a verification of the assumptions targeting the usability of Unity3D and the framework a group usability study will be conducted. The method is qualified to rapidly collect major usability issues and functional deficits of a system in a short amount of time.\cite{downey2007group}
+To approach a verification of the assumptions targeting the usability of Unity3D and the framework a group usability study will be conducted. The method is qualified to rapidly collect major usability issues and functional deficits of a system in a short amount of time\cite{downey2007group}.
 Therefore, a one-day workshop with the BeMoBIL Team will be held. Regarding the complexity of the topic, the appropiate task might be the modification of the prior described paradigm of the pilot experiment with reduced demand on programming.
 
 \section*{Schedule}
@@ -91,7 +90,9 @@ Therefore, a one-day workshop with the BeMoBIL Team will be held. Regarding the 
 \paragraph{June} Data collection of the pilot experiment coupled with further development of the framework components. Additionally to that, the usability studie will be prepared. Description the whole framework in the thesis, and conducting the workshop. Evaluation the workshop results. 
 \paragraph{July} Finalizing the thesis. 
 
-\bibliographystyle{apalike}
+%\bibliographystyle{apalike}
 \bibliography{../../literatur}
 
 \end{document}
+
+ 
